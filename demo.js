@@ -56,6 +56,8 @@ function Demo(ctx1, height, width, soundManager1) {
     	ctx.moveTo(0, base_y);
     	ctx.lineTo(600, base_y);
     	ctx.stroke();
+		
+		ctx.lineJoin = "round";
 
 		// 5rd
 		ctx.strokeStyle = "rgb(1,1,35)";
@@ -68,6 +70,7 @@ function Demo(ctx1, height, width, soundManager1) {
         drawLine(points[3], 10);
         drawLine(points[3], 3);
 
+		ctx.lineJoin = "miter";
         // 2nd
         ctx.strokeStyle = "rgba(1,1,255,0.1)";
         drawLine(points[2], 10);
