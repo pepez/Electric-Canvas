@@ -1,0 +1,58 @@
+<!-- 
+// index.html
+// Copyright (C) 2011  Petteri Hietavirta
+//
+// This file is part of Electric Canvas Demo.
+//
+// Electric Canvas Demo is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// petteri.hietavirta@gmail.com
+//
+-->
+  
+<html>
+    <head>
+    	<title>Electric Canvas Demo</title>
+    	<script src="soundmanager2-nodebug-jsmin.js"></script>
+        
+    	<script>
+    		soundManager.url = 'swf/';
+    		soundManager.flashVersion = 9;
+			soundManager.debugMode = false;
+			soundManager.useHighPerformance = true;
+			soundManager.useFastPolling = true;
+			soundManager.flashPollingInterval = 50;
+    	</script>
+        <script type="text/javascript" src="demo.js">
+        </script>
+        <script type="text/javascript" src="startup.js">
+        </script>
+        <link type="text/css" href="main.css" rel="stylesheet"/> 
+        
+    </head>
+    <body>
+        <p>
+            Electric Canvas Demo
+        </p>
+        <p>
+        	<a href="#" onclick="toggleMusic();">Click to turn music on/off.</a>
+        </p>
+        <canvas id="demoCanvas" width="600" height="400">
+            Canvas is not supported
+        </canvas>
+        <p>
+           CC Music <a href="http://www.jamendo.com/en/track/213930">Blackleg - Dopamine</a>
+        </p>
+    </body>
+</html>
