@@ -1,4 +1,4 @@
-// game.js
+// demo.js
 // Copyright (C) 2011  Petteri Hietavirta
 //
 // This file is part of Electric Canvas.
@@ -23,7 +23,8 @@ function Demo(ctx1, height, width, soundManager1) {
     var FPS = 20;
     var SECONDS_BETWEEN_FRAMES = 1 / FPS;
 
-	var hScale = 100;
+	var SCALE = 100;
+	var base_y = height/2;
 
     var canvas_height = height;
     var canvas_width = width;
@@ -44,9 +45,7 @@ function Demo(ctx1, height, width, soundManager1) {
 	    	generateRandomPoints();
     	}
   		ctx.clearRect(0, 0, canvas_width, canvas_height);
-  
- 		 ctx.globalCompositeOperation = "lighter";
-
+ 		ctx.globalCompositeOperation = "lighter";
 		drawWaveform();
     }
     
@@ -54,22 +53,16 @@ function Demo(ctx1, height, width, soundManager1) {
     	ctx.lineWidth = 0.5;
     	ctx.strokeStyle = "#3300FF";
  	    ctx.beginPath();
-    	ctx.moveTo(0, 200);
-    	ctx.lineTo(600, 200);
+    	ctx.moveTo(0, base_y);
+    	ctx.lineTo(600, base_y);
     	ctx.stroke();
-		
-		//ctx.lineJoin = "round";
-		// 6rd
-		// ctx.strokeStyle = "rgba(1,1,35,1)";
-		// drawLine(points[6], 24);
+
 		// 5rd
 		ctx.strokeStyle = "rgb(1,1,35)";
 		drawLine(points[5], 22);
 		// 4rd
 		ctx.strokeStyle = "rgba(1,1,255,0.2)";
         drawLine(points[4], 20);
-        // ctx.strokeStyle = "rgba(1,1,255,0.1)";
-        // drawLine(points[4], 10);
         // 3rd
         ctx.strokeStyle = "rgba(1,1,255,0.2)";
         drawLine(points[3], 10);
@@ -80,19 +73,14 @@ function Demo(ctx1, height, width, soundManager1) {
         drawLine(points[2], 10);
         ctx.strokeStyle = "rgba(1,1,255,0.1)";
         drawLine(points[2], 5);
-        // ctx.strokeStyle = "rgba(1,1,255,0.3)";
-        // drawLine(points[2], 1);
 
         // 1nd
-        // ctx.strokeStyle = "rgba(1,1,255,0.1)";
-        // drawLine(points[1], 10);
         ctx.strokeStyle = "rgba(1,1,255,0.5)";
         drawLine(points[1], 3);
         ctx.strokeStyle = "rgba(160,160,255,0.9)";
         drawLine(points[1], 0.5);
 
         // current
-		//ctx.lineJoin = "miter";
         ctx.strokeStyle = "rgba(1,1,255,0.3)";
         drawLine(points[0], 10);
         ctx.strokeStyle = "rgba(100,100,255,0.4)";
@@ -100,7 +88,6 @@ function Demo(ctx1, height, width, soundManager1) {
         ctx.strokeStyle = "rgb(255,255,255)";
  		drawLine(points[0], 1);
  		
- 		// points[6] = points[5];
  		points[5] = points[4];
  		points[4] = points[3];
  		points[3] = points[2];
@@ -112,18 +99,18 @@ function Demo(ctx1, height, width, soundManager1) {
 		if (points.length != 0) {
 			ctx.lineWidth = thickness;
 			ctx.beginPath();
-	        ctx.moveTo(0, 200);
+	        ctx.moveTo(0, base_y);
 	        for (p in points) {
 		        ctx.lineTo(p*(600/255), points[p]);
 			}
-	        ctx.lineTo(600, 200);
+	        ctx.lineTo(600, base_y);
 	        ctx.stroke();
 		}
 	}
 
 	function generatePoint(maxDelta, previousPoint) {
-		var topLimit = 200+maxDelta;
-		var bottomLimit = 200-maxDelta;
+		var topLimit = base_y+maxDelta;
+		var bottomLimit = base_y-maxDelta;
 		var p;
 	
 		if (previousPoint+maxDelta/2 > topLimit) {
@@ -140,19 +127,19 @@ function Demo(ctx1, height, width, soundManager1) {
 	function generateRandomPoints() {
 		points[0] = [];
 		
-       	var previousPoint = 200;
+       	var previousPoint = base_y;
          for (var a = 0; a< 255 ; a++) {
         	var maxDelta = Math.sin(Math.PI*(a/255));
-        	var currentPoint = generatePoint(maxDelta*hScale,previousPoint);
+        	var currentPoint = generatePoint(maxDelta*SCALE,previousPoint);
         	points[0].push(currentPoint);
         	previousPoint = currentPoint;
          }
 	}
 	
-	function wf() {
+	function readWaveform() {
 		points[0] = [];
 		for (var i=0; i<256; i++) {
-	 		points[0].push(200+tune.waveformData.left[i]*hScale);
+	 		points[0].push(base_y+tune.waveformData.left[i]*SCALE);
 	 	}
 	}
 	
@@ -162,7 +149,7 @@ function Demo(ctx1, height, width, soundManager1) {
 			 id:'mySound',
 			 url:'http://stream28.jamendo.com/stream/213930/mp31/02%20-%20Blackleg%20-%20Dopamine.mp3?u=0&h=9b59bc0258',
 			 useWaveformData:true,
-			 whileplaying: wf
+			 whileplaying: readWaveform
 			});
 	
         setInterval(demoStep, SECONDS_BETWEEN_FRAMES*1000);
