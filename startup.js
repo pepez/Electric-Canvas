@@ -19,7 +19,6 @@
 // petteri.hietavirta@gmail.com
 //
 
-
 // Get the Canvas element, start demo when soundmanager is ready.
 function init() {
     canvas = document.getElementById('demoCanvas');
