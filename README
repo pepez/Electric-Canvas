@@ -1,5 +1,7 @@
-Simple HTML5 Canvas game tutorial
+This is my Sunday project and the original idea was to create a visual effect that looks little bit like the electric arc in Tesla coil. That is what you see in the screenshot.
 
-This tutorial explains how to draw graphics on the Canvas, how to calculate movements based on input and how to construct a game loop.
+Then I decided to modify it to display audio waveform from the data provided by SoundManager2. I haven't used it before so it took time to get it working properly.
+
+Check the URL to try it out, it requires Flash 9 and should work with FF, Safari and Chrome. Music is streamed from Jamendo so don't worry about my bandwidth.
 
 Petteri Hietavirta
