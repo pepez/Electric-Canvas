@@ -2,6 +2,6 @@ This is my Sunday project and the original idea was to create a visual effect th
 
 Then I decided to modify it to display audio waveform from the data provided by SoundManager2. I haven't used it before so it took time to get it working properly.
 
-Check the URL to try it out, it requires Flash 9 and should work with FF, Safari and Chrome. Music is streamed from Jamendo so don't worry about my bandwidth.
+Check the URL to try it out, it requires Flash 9 and should work with FF, Safari and Chrome. Music can be streamed from Jamendo if you allow it in the flash setting (cross domain access).
 
 Petteri Hietavirta
